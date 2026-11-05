@@ -1,0 +1,474 @@
+
+/* =========================
+   Font
+========================= */
+
+@font-face {
+  font-family: 'CalSans';
+  src: url('/assets/fonts/CalSans-Regular.ttf') format('truetype');
+}
+
+body {
+  font-family: 'CalSans', sans-serif;
+  min-height: 100vh;
+
+  background-image: url('/assets/images/background/background_1.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+
+  transition: background-image 0.6s ease;
+}
+
+body.bg-2 {
+  background-image: url('/assets/images/background/background_2.jpg');
+}
+
+/* =========================
+   Glass Effect
+========================= */
+
+.glass {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+/* =========================
+   Header
+========================= */
+
+header {
+  background: rgba(255, 255, 255, 0.1);
+  transition: background 0.5s ease;
+}
+
+body.bg-2 header {
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.bg-toggle {
+  width: 40px;
+  color: white;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.bg-toggle:hover {
+  color: white;
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.bg-toggle i {
+  transition: transform 0.5s ease;
+}
+
+body.bg-2 .bg-toggle i {
+  transform: rotate(180deg);
+}
+
+/* =========================
+   Main Container
+========================= */
+
+#city_container {
+  max-width: 420px;
+}
+
+/* =========================
+   Search
+========================= */
+
+.search_bar {
+  min-width: 0;
+}
+
+#cityInput {
+  min-width: 0;
+  height: 42px;
+  font-size: 16px;
+}
+
+#cityInput::placeholder {
+  color: #777;
+  opacity: 0.8;
+}
+
+#searchBtn {
+  width: 42px;
+  height: 42px;
+}
+
+#searchBtn:active {
+  transform: scale(1.08);
+  background: #000;
+  color: #fff;
+}
+
+/* =========================
+   Location Button
+========================= */
+
+#useLocation {
+  max-width: 100%;
+  transition: background 0.3s ease;
+}
+
+#useLocation:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* =========================
+   Temperature Toggle
+========================= */
+
+.temp-toggle {
+  position: relative;
+  display: inline-block;
+  width: 80px;
+  height: 40px;
+  cursor: pointer;
+}
+
+.toggle-checkbox {
+  position: absolute;
+  opacity: 0;
+}
+
+.slider {
+  position: absolute;
+  inset: 0;
+
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+
+  border-radius: 8px;
+  backdrop-filter: blur(10px);
+  overflow: hidden;
+
+  transition: 0.4s ease;
+}
+
+.slider::after {
+  content: "";
+  position: absolute;
+
+  width: 36px;
+  height: 36px;
+  top: 1px;
+  left: 1px;
+
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 6px;
+
+  transition: transform 0.4s ease;
+}
+
+.slider::before {
+  content: "°C";
+
+  position: absolute;
+  top: 50%;
+  left: 12px;
+
+  transform: translateY(-50%);
+  color: white;
+  font-weight: bold;
+
+  transition: 0.4s ease;
+}
+
+.toggle-checkbox:checked + .slider::after {
+  transform: translateX(40px);
+}
+
+.toggle-checkbox:checked + .slider::before {
+  content: "°F";
+  left: 48px;
+}
+
+.toggle-checkbox:focus-visible + .slider {
+  outline: 2px solid white;
+  outline-offset: 3px;
+}
+
+/* =========================
+   Weather Card
+========================= */
+
+#weatherInfo {
+  min-height: 300px;
+  max-width: 340px;
+  margin-inline: auto;
+
+  color: white;
+  opacity: 0;
+  filter: blur(4px);
+
+  transition:
+    opacity 0.3s ease,
+    filter 0.3s ease;
+}
+
+#weatherInfo.show {
+  opacity: 1;
+  filter: blur(0);
+}
+
+#weatherInfo h3 {
+  font-size: clamp(20px, 5vw, 26px);
+  color: white;
+  margin-bottom: 0;
+}
+
+#weatherInfo p {
+  color: white;
+  margin-bottom: 5px;
+}
+
+#weatherInfo .temperature {
+  font-size: clamp(28px, 7vw, 36px);
+}
+
+.weather-icon {
+  width: clamp(120px, 40vw, 160px);
+  height: auto;
+  margin-bottom: -20px;
+}
+
+/* =========================
+   Weather Details
+========================= */
+
+.weather-details {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 10px;
+  margin-top: auto;
+  padding-top: 10px;
+}
+
+.weather-details span {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 0;
+}
+
+.weather-details .value {
+  font-size: clamp(17px, 4vw, 22px);
+  font-weight: bold;
+}
+
+.weather-details small {
+  color: #ddd;
+  font-size: clamp(12px, 3vw, 16px);
+}
+
+/* =========================
+   Sunrise / Sunset
+========================= */
+
+#sun {
+  max-width: 340px;
+  display: flex;
+}
+
+.sun-box {
+  min-width: 0;
+  text-align: center;
+  color: white;
+
+  opacity: 0;
+  transform: translateY(10px);
+
+  transition:
+    opacity 0.4s ease,
+    transform 0.4s ease;
+}
+
+#sun.visible .sun-box {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.sun-box small {
+  display: block;
+  font-size: clamp(12px, 3vw, 15px);
+  opacity: 0.8;
+}
+
+.sun-box strong {
+  display: block;
+  font-size: clamp(14px, 3.5vw, 18px);
+  overflow-wrap: anywhere;
+}
+
+/* =========================
+   Clock
+========================= */
+
+
+.clock {
+  max-width: 340px;
+  min-height: 60px;
+  color: white;
+  font-size: 18px;
+
+  opacity: 0;
+  transform: translateY(10px);
+
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.clock.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.clock span {
+  flex: 1;
+  min-width: 0;
+}
+
+#time {
+  text-align: left;
+  font-size: 20px;
+}
+
+#date {
+  text-align: right;
+  font-size: 20px;
+}
+
+@media (max-width: 576px) {
+  .clock {
+    font-size: 18px;
+    min-height: 65px;
+    padding: 16px !important;
+  }
+
+  #time {
+    font-size: 20px;
+  }
+
+  #date {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 360px) {
+  #time {
+    font-size: 18px;
+  }
+
+  #date {
+    font-size: 16px;
+  }
+}
+
+
+/* =========================
+   Loader
+========================= */
+
+.loader {
+  width: 12px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: white;
+
+  animation: bounceDots 1.2s infinite ease-in-out;
+}
+
+@keyframes bounceDots {
+  0% {
+    box-shadow: 20px 0 white, -20px 0 rgba(255,255,255,0.2);
+  }
+
+  33% {
+    box-shadow: 20px 0 rgba(255,255,255,0.2), -20px 0 white;
+  }
+
+  66% {
+    box-shadow: 20px 0 rgba(255,255,255,0.2), -20px 0 white;
+  }
+
+  100% {
+    box-shadow: 20px 0 white, -20px 0 rgba(255,255,255,0.2);
+  }
+}
+
+/* =========================
+   Small Mobile
+========================= */
+
+@media (max-width: 360px) {
+
+  header h1 {
+    font-size: 1.2rem;
+  }
+
+  #weatherInfo {
+    min-height: 280px;
+  }
+
+  .clock {
+    font-size: 12px;
+    padding: 10px !important;
+  }
+
+  #sun {
+    gap: 8px !important;
+  }
+
+  .sun-box {
+    padding: 8px !important;
+  }
+
+}
+
+/* =========================
+   Tablet
+========================= */
+
+@media (min-width: 768px) {
+
+  #city_container {
+    gap: 1.5rem !important;
+  }
+
+  #weatherInfo {
+    min-height: 320px;
+  }
+
+}
+
+/* =========================
+   Desktop
+========================= */
+
+@media (min-width: 1200px) {
+
+  #city_container {
+    max-width: 420px;
+  }
+
+}
+
+/* =========================
+   Accessibility
+========================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+
+}
