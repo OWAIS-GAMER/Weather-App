@@ -1,0 +1,175 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Weather App</title>
+
+  <!-- Bootstrap 5 -->
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  >
+
+  <!-- Font Awesome -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+  >
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="assets/styles/style.css">
+</head>
+
+<body class="text-white d-flex flex-column min-vh-100">
+
+  <!-- Header -->
+  <header class="glass shadow-sm py-3">
+    <div class="container position-relative text-center">
+
+      <h1 class="h3 mb-0">Weather App</h1>
+
+      <button
+        id="bgToggle"
+        class="btn bg-toggle position-absolute top-50 end-0 translate-middle-y"
+        type="button"
+        aria-label="Toggle background"
+      >
+        <i id="toggleIcon" class="fa-solid fa-sun"></i>
+      </button>
+
+    </div>
+  </header>
+
+  <hr class="border-white opacity-75 my-0">
+
+  <!-- Main -->
+  <main class="container flex-grow-1 d-flex justify-content-center align-items-center py-4 py-md-5">
+
+    <div class="row justify-content-center w-100">
+
+      <div class="col-12 col-sm-10 col-md-8 col-lg-6 col-xl-5">
+
+        <div
+          id="city_container"
+          class="d-flex flex-column align-items-center gap-3 gap-md-4 mx-auto w-100"
+        >
+
+          <!-- Temperature Toggle -->
+          <div class="w-100 d-flex justify-content-start">
+
+            <label class="temp-toggle" for="unitToggle">
+
+              <input
+                type="checkbox"
+                id="unitToggle"
+                class="toggle-checkbox"
+              >
+
+              <span class="slider"></span>
+
+            </label>
+
+          </div>
+
+          <!-- Search -->
+          <form
+            id="searchForm"
+            class="search_bar glass shadow-sm rounded-3 p-2 d-flex align-items-center gap-2 w-100"
+          >
+
+            <input
+              id="cityInput"
+              type="search"
+              class="form-control border-0"
+              placeholder="Enter your city name"
+              aria-label="Enter city name"
+              autocomplete="off"
+            >
+
+            <button
+              id="searchBtn"
+              class="btn btn-light rounded-3 flex-shrink-0"
+              type="submit"
+              aria-label="Search"
+            >
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </button>
+
+          </form>
+
+          <!-- Location -->
+          <button
+            id="useLocation"
+            class="btn glass text-white rounded-3 px-4 py-2 d-flex align-items-center justify-content-center gap-2"
+            type="button"
+          >
+            <i class="fa-solid fa-location-dot"></i>
+            <span>Use my location</span>
+          </button>
+
+          <!-- Loader -->
+          <div id="loader" class="loader d-none" aria-label="Loading"></div>
+
+          <!-- Weather Card -->
+          <div
+            id="weatherInfo"
+            class="glass shadow rounded-4 p-3 p-sm-4 d-none flex-column align-items-center justify-content-center text-center w-100"
+          ></div>
+
+          <!-- Sunrise and Sunset -->
+          <div
+            id="sun"
+            class="d-none w-100 gap-2 gap-sm-3"
+          >
+
+            <div
+              id="sunrise"
+              class="sun-box glass shadow-sm rounded-3 p-2 p-sm-3 flex-fill"
+            ></div>
+
+            <div
+              id="sunset"
+              class="sun-box glass shadow-sm rounded-3 p-2 p-sm-3 flex-fill"
+            ></div>
+
+          </div>
+
+          <!-- Clock -->
+
+<div
+  id="clock"
+  class="clock glass shadow-sm rounded-3 p-3 d-none align-items-center justify-content-between gap-2 w-100"
+>
+  <span id="time" class="text-start"></span>
+
+  <span id="date" class="text-end"></span>
+</div>
+
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="text-end p-2 small">
+    Made by Owais
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+  ></script>
+
+  <!-- Custom JS -->
+  <script src="assets/scripts/main.js"></script>
+
+</body>
+</html>
